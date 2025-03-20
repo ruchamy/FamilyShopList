@@ -1,20 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasksDB.db'
+db = SQLAlchemy(app)
 
 
-class User():
-    def __init__(self, id, email, password):
-        self.id = id
-        self.email = email
-        self.password = password
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(80), nullable=False)
 
 
-users = [
-    User(id=1, email='user1@example.com', password='password1'),
-    User(id=2, email='user2@example.com', password='password2'),
-    User(id=3, email='user3@example.com', password='password3')
-]
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/')
@@ -27,7 +26,7 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        user = next((u for u in users if u.email == email and u.password == password), None)
+        user = User.query.filter_by(email=email, password=password).first()
         if user:
             return redirect(url_for('shopping', user_email=email))
         else:
@@ -40,10 +39,11 @@ def register():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        if any(u.email == email for u in users):
+        if User.query.filter_by(email=email).first():
             return render_template('message.html', message="האימייל כבר קיים", url="/login", url_text="התחבר")
-        new_ser = User(id=users[-1].id + 1,email=email, password=password)
-        users.append(new_ser)
+        new_ser = User(email=email, password=password)
+        db.session.add(new_ser)
+        db.session.commit()
         return redirect(url_for('login'))
     return render_template('register.html')
 
