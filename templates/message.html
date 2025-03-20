@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="static/styles.css">
+
+<title>שגיאה</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>שגיאה</h2>
+    <p style="color: red; font-weight: bold;">{{ message }}</p>
+    <a href={{url}}>{{url_text}}</a>
+</div>
+{% endblock %}
