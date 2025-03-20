@@ -1,0 +1,18 @@
+<table>
+    <tr>
+        <th>שם מוצר</th>
+        <th>קטגוריה</th>
+        <th>כמות</th>
+        <th>מחיר</th>
+        <th>תאריך</th>
+    </tr>
+    {% for purchase in purchases %}
+    <tr>
+        <td>{{ purchase["product"] }}</td>
+        <td>{{ purchase["category"] }}</td>
+        <td>{{ purchase["quantity"]}}</td>
+        <td>{{ purchase["price"]}}</td>
+        <td>{{ purchase["date"]}}</td>
+    </tr>
+    {% endfor %}
+</table>

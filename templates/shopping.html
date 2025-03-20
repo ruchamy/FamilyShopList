@@ -7,33 +7,32 @@
 
 {% block body %}
 <h2>ניהול קניות</h2>
-<form method="POST" action="/add_purchase">
+<form method="POST" action="/shopping/{{user_email}}">
     <label for="product">שם המוצר:</label>
     <input type="text" name="product" required>
-    <br>
     <label for="category">קטגוריה:</label>
     <input type="text" name="category" required>
-    <br>
     <label for="quantity">כמות:</label>
     <input type="number" name="quantity" required>
-    <br>
     <label for="price">מחיר:</label>
     <input type="number" step="0.01" name="price" required>
-    <br>
     <label for="date">תאריך:</label>
     <input type="date" name="date" required>
-    <br>
     <button type="submit">הוסף קניה</button>
 </form>
 
 <h3>היסטוריית קניות</h3>
-<form method="GET" action="/view_purchases">
+<form method="GET" action="/view_purchases/{{user_email}}">
     <label for="start_date">מתאריך:</label>
     <input type="date" name="start_date">
-    <br>
     <label for="end_date">עד תאריך:</label>
     <input type="date" name="end_date">
-    <br>
     <button type="submit">הצג קניות</button>
 </form>
+{% if purchases %}
+
+{% include "view_purchases.html" %}
+{% else %}
+<p>אין רכישות להצגה.</p>
+{% endif %}
 {% endblock %}
