@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timedelta
 import pandas as pd
 import os
 
@@ -9,7 +9,7 @@ if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasksDB.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///purchasesDB.db'
 db = SQLAlchemy(app)
 
 
@@ -88,14 +88,20 @@ def shopping(user_email):
 def view_purchases(user_email):
     start_date = request.args.get('start_date', '')
     end_date = request.args.get('end_date', '')
+    start_date = datetime.strptime(start_date, "%Y-%m-%d").date() if start_date else None
+    end_date = datetime.strptime(end_date, "%Y-%m-%d").date() if end_date else None
+
     file_path = os.path.join(DATA_DIR, f"{user_email}.csv")
     purchases = []
     if os.path.exists(file_path):
         df = pd.read_csv(file_path)
+        df["date"] = pd.to_datetime(df["date"], errors='coerce')
+        df["date"] = df["date"].dt.date
         if start_date and end_date:
-            df["date"] = pd.to_datetime(df["date"])
             mask = (df["date"] >= start_date) & (df["date"] <= end_date)
-            df = df[mask]
+        else:
+            mask = (df["date"] >= datetime.now().date() - timedelta(days=7))
+        df = df[mask]
         purchases = df.to_dict(orient="records")
     return render_template('shopping.html', user_email=user_email,purchases=purchases)
 
