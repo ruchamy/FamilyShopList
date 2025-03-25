@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חנות מוצרים</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            width: 200px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-card .details {
+            padding: 10px;
+        }
+
+        .product-card .details h3 {
+            font-size: 18px;
+            color: #333;
+            margin: 0;
+        }
+
+        .product-card .details p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .product-card .details .price {
+            color: #28a745;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ברוך הבא לחנות המוצרים שלנו!</h1>
+    </header>
+
+    <div class="container">
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="לחם">
+            <div class="details">
+                <h3>לחם</h3>
+                <p>מאפים</p>
+                <p class="price">₪10.00</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="חלב">
+            <div class="details">
+                <h3>חלב</h3>
+                <p>מוצרי חלב</p>
+                <p class="price">₪8.50</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="ביצים">
+            <div class="details">
+                <h3>ביצים</h3>
+                <p>מוצרי חלב</p>
+                <p class="price">₪15.00</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="גבינה">
+            <div class="details">
+                <h3>גבינה</h3>
+                <p>מוצרי חלב</p>
+                <p class="price">₪22.00</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="אורז">
+            <div class="details">
+                <h3>אורז</h3>
+                <p>קטניות</p>
+                <p class="price">₪12.00</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="שמן">
+            <div class="details">
+                <h3>שמן</h3>
+                <p>תבלינים</p>
+                <p class="price">₪18.00</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="קפה">
+            <div class="details">
+                <h3>קפה</h3>
+                <p>משקאות</p>
+                <p class="price">₪20.00</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="תה">
+            <div class="details">
+                <h3>תה</h3>
+                <p>משקאות</p>
+                <p class="price">₪7.50</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="פסטה">
+            <div class="details">
+                <h3>פסטה</h3>
+                <p>קטניות</p>
+                <p class="price">₪14.00</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://via.placeholder.com/200" alt="עגבניות">
+            <div class="details">
+                <h3>עגבניות</h3>
+                <p>ירקות</p>
+                <p class="price">₪5.00</p>
+                <button class="btn">הוסף לעגלה</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 חנות מוצרים</p>
+    </footer>
+</body>
+</html>

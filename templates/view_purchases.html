@@ -1,9 +1,27 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href='/static/styles.css'>
+<title>הקניות שלי</title>
+{% endblock %}
+
+{% block body %}
+<h3>היסטוריית קניות</h3>
+<form method="GET" action="/view_purchases/{{user_email}}">
+    <label for="start_date">מתאריך:</label>
+    <input type="date" name="start_date">
+    <label for="end_date">עד תאריך:</label>
+    <input type="date" name="end_date">
+    <button type="submit">הצג קניות</button>
+</form>
+{% if purchases %}
 <table>
     <tr>
         <th>שם מוצר</th>
         <th>קטגוריה</th>
         <th>כמות</th>
         <th>מחיר</th>
+        <th>סה"כ</th>
         <th>תאריך</th>
     </tr>
     {% for purchase in purchases %}
@@ -12,7 +30,12 @@
         <td>{{ purchase["category"] }}</td>
         <td>{{ purchase["quantity"]}}</td>
         <td>{{ purchase["price"]}}</td>
+        <td>{{ (purchase["price"] * purchase["quantity"]) | round(2) }}</td>
         <td>{{ purchase["date"]}}</td>
     </tr>
     {% endfor %}
 </table>
+{% else %}
+<p>אין רכישות להצגה.</p>
+{% endif %}
+{% endblock %}

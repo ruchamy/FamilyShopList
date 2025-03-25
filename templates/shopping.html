@@ -20,19 +20,4 @@
     <input type="date" name="date" required>
     <button type="submit">הוסף קניה</button>
 </form>
-
-<h3>היסטוריית קניות</h3>
-<form method="GET" action="/view_purchases/{{user_email}}">
-    <label for="start_date">מתאריך:</label>
-    <input type="date" name="start_date">
-    <label for="end_date">עד תאריך:</label>
-    <input type="date" name="end_date">
-    <button type="submit">הצג קניות</button>
-</form>
-{% if purchases %}
-
-{% include "view_purchases.html" %}
-{% else %}
-<p>אין רכישות להצגה.</p>
-{% endif %}
 {% endblock %}

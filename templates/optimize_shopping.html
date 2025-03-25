@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href='/static/styles.css'>
+<title>ייעול קניות</title>
+{% endblock %}
+
+{% block body %}
+<h1>הצעות לייעול הקניות שלך</h1>
+
+{% if cheaper_products %}
+<p>מצאנו מוצרים שנמכרים בזול יותר בחנות! בדוק את ההצעות:</p>
+<table border="1">
+    <thead>
+    <tr>
+        <th>שם המוצר</th>
+        <th>המחיר שלך</th>
+        <th>המחיר בחנות</th>
+        <th>חסכון</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in cheaper_products %}
+    <tr>
+        <td>{{ product.product }}</td>
+        <td>{{ product.user_price }}₪</td>
+        <td>{{ product.store_price }}₪</td>
+        <td>{{ (product.user_price - product.store_price) | round(2) }}₪</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<p><a href="/static/dummy_shop.html" target="_blank">עבור לחנות כדי לבדוק מחירים</a></p>
+{% else %}
+<p>לא נמצאו הצעות לייעול הקניות שלך.</p>
+{% endif %}
+
+{% endblock %}

@@ -7,7 +7,27 @@
     {% endblock %}
 </head>
 <body>
+    {% if user_email and user_email == "dummy_user" %}
+    <h1>משתמש מדומה</h1>
+    {% endif %}
+
+<nav>
+    {% if user_email %}
+    <a href="{{ url_for('show_graphs',user_email=user_email) }}">הצגת גרפים</a>
+    <a href="{{ url_for('optimize_shopping',user_email=user_email) }}">יעול קניות</a>
+    <a href="{{ url_for('view_purchases',user_email=user_email) }}">הקניות שלי</a>
+    {% if user_email != "dummy_user" %}
+    <a href="{{ url_for('shopping',user_email=user_email) }}">ניהול קניות</a>
+    {% endif %}
+    {% else %}
+    <a href="{{ url_for('register') }}">הרשמה</a>
+    <a href="{{ url_for('view_dummy_user') }}">צפייה במשתמש מדומה</a>
+  {% endif %}
+</nav>
 {% block body %}
 {% endblock %}
+    {% if user_email and user_email == "dummy_user" %}
+    <a href="{{ url_for('register') }}">הרשמה</a>
+    {% endif %}
 </body>
 </html>

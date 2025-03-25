@@ -1,151 +1,167 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     direction: rtl;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: #f3e5f5;
     margin: 0;
     padding: 20px;
+    color: #4a148c;
 }
 
+/* Container */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(74, 20, 140, 0.2);
+    border-radius: 12px;
+    border: 2px solid #6a1b9a;
+}
+
+/* Typography */
+h1, h2, h3 {
+    text-align: center;
+    color: #6a1b9a;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+p {
+    line-height: 1.8;
+    margin: 10px 0;
+    color: #4a148c;
+}
+
+/* Tables */
 table {
-    width: 50%;
-    margin: auto;
+    width: 100%;
+    margin-top: 20px;
     border-collapse: collapse;
-    background: white;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 table, th, td {
-    border: 1px solid black;
-    padding: 10px;
+    border: 1px solid #ba68c8;
+    padding: 12px;
+    text-align: center;
 }
 
 th {
-    background-color: #007bff;
+    background-color: #8e24aa;
     color: white;
+    text-transform: uppercase;
+    font-size: 14px;
 }
 
-td {
-    text-align: right;
-}
-
-a, button {
-    margin: 5px;
-    padding: 5px 10px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-}
-
-a {
-    background-color: #28a745;
-    color: white;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #dc3545;
-    color: white;
-    border-radius: 5px;
-}
-
+/* Forms */
 form {
     margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-}
-
-input {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-
-
-
-/* עיצוב כללי */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-}
-
-/* עיצוב הכותרות */
-h1, h2, h3 {
-    text-align: center;
-    color: #333;
-}
-
-/* עיצוב קונטיינר מרכזי */
-.container {
-    width: 50%;
-    margin: 20px auto;
+  display: flex;
+   flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    background: #f3e5f5;
     padding: 20px;
-    background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(74, 20, 140, 0.2);
+    border: 2px solid #6a1b9a;
 }
 
-/* עיצוב טפסים */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+input, select, textarea {
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 2px solid #ba68c8;
+    border-radius: 8px;
+ /*   width: 100%;*/
+    background: #f8e1f4;
+    color: #4a148c;
 }
 
 label {
     font-weight: bold;
-}
-
-input, select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin-bottom: 5px;
+    color: #6a1b9a;
 }
 
 button {
-    background: #28a745;
+    background-color: #7b1fa2;
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
+    transition: background 0.3s;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 button:hover {
-    background: #218838;
+    background-color: #4a148c;
 }
 
-/* עיצוב טבלאות */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-th {
-    background: #007bff;
-    color: white;
-}
-
-/* עיצוב לקישורים */
+/* Links */
 a {
-    color: #007bff;
+    color: #6a1b9a;
     text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    font-weight: bold;
 }
 
 a:hover {
     text-decoration: underline;
+    background-color: rgba(138, 43, 226, 0.1);
+}
+img {
+display: block;
+ margin: 20px auto;
+ max-width: 80%;
+  }
+
+/* Buttons */
+button.danger {
+    background-color: #ab47bc;
+}
+
+button.danger:hover {
+    background-color: #8e24aa;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
 }
