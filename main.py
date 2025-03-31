@@ -185,8 +185,12 @@ def show_graph(user_email, graph_type):
 
 @app.route('/optimize_shopping/<user_email>')
 def optimize_shopping(user_email):
-    with open("static/dummy_shop.html", encoding="utf-8") as fp:
+    dummy_shop_path = os.path.join(os.path.dirname(__file__), "static", "dummy_shop.html")
+    with open(dummy_shop_path, encoding="utf-8") as fp:
         soup = BeautifulSoup(fp, "html.parser")
+
+    print(soup.prettify())
+
     products = soup.find_all("div", class_="product-card")
     store_prices = {}
     for product in products:
@@ -195,6 +199,7 @@ def optimize_shopping(user_email):
         price = float(price.replace("₪", "").replace(",", ""))
         store_prices[name] = price
     file_path = os.path.join(DATA_DIR, f"{user_email}.csv")
+    print(os.path.exists(file_path))
     if os.path.exists(file_path):
         user_purchases = pd.read_csv(file_path)
         cheaper_products = {}
